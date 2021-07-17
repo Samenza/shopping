@@ -1,0 +1,22 @@
+.main__page {
+  background-image: url("../../assets/wave/wave.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.navBarBackgound {
+  position: sticky;
+  background: rgb(255, 255, 255);
+  background: rgb(255, 255, 255);
+  background: rgb(255, 255, 255);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(240, 226, 217, 1) 10%,
+    rgba(236, 207, 192, 1) 40%,
+    rgba(236, 207, 192, 1) 60%,
+    rgba(240, 226, 217, 1) 90%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}

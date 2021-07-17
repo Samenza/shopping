@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Gotu&display=swap");
+.nav_items_font {
+  font-family: "Gotu", sans-serif;
+  font-size: 1.3rem;
+  margin: 0 20px;
+}
+.nav_items {
+  text-decoration: none;
+  color: #000000;
+  width: 100%;
+}
+.nav_items:hover {
+  background-color: #cf774836;
+}
+@media screen and (min-width: 960px) {
+  .nav_items:hover {
+    background-color: transparent;
+  }
+  .nav_items:after {
+    display: block;
+    content: "";
+    border-bottom: 3px solid #cf7748;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .nav_items:hover:after {
+    transform: scaleX(1);
+  }
+
+  .nav_items.active {
+    border-bottom: 3px solid #cf7748;
+    transition: border-bottom 0.3s 0.3s ease-in-out;
+  }
+  .nav_items.active:hover {
+    border-bottom: none;
+  }
+}
