@@ -3,14 +3,15 @@ import ProductHeader from "./header/ProductHeader";
 
 import "./Products.css";
 import Shop from "./shop/Shop";
+import { Box } from "@material-ui/core";
 
 const Products = () => {
   return (
-    <div>
+    <Box display="flex" flexDirection="column" alignItems="center">
       <div className="background"></div>
       <ProductHeader />
       <Shop />
-    </div>
+    </Box>
   );
 };
 

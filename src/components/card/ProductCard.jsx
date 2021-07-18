@@ -14,7 +14,7 @@ const useStyle = makeStyles((theme) => ({
     width: "30%",
     minWidth: "250px",
     margin: " 10px",
-
+    height: "fit-content",
     [theme.breakpoints.down("xs")]: {
       maxWidth: "90%",
     },

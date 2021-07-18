@@ -1,40 +1,89 @@
-import React from "react";
-import { makeStyles, Container, Box } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+
 import ProductCard from "./../../card/ProductCard";
 import getProductImages from "./../../../services/productImgData/prodauctImgData";
 import Filtering from "./filtering/Filtering";
+import SearchBox from "./searchBox/SearchBox";
+import Sort from "./sort/Sort";
+
+import {
+  categoryReducer,
+  categoryInit,
+} from "./filtering/filteringCategory/FiltringCategory";
+import { useReducer } from "react";
+import {
+  colorInit,
+  colorReducer,
+} from "./filtering/filtringColor/FiltringColor";
+
+import { makeStyles, Container, Box } from "@material-ui/core";
 
 const useStyle = makeStyles({
   container: {
     display: "flex",
+    marginTop: "2rem",
+    minHeight: "75vh",
   },
-  shopMain: {
-    backgroundColor: "#ececec",
-  },
+  shopMain: { backgroundColor: "#ececec", width: "100%" },
   shopBox: {
-    width: "75%",
+    width: "100%",
     display: "flex",
     flexWrap: "wrap",
-    marginTop: "10vh",
     justifyContent: "center",
   },
 });
 
 const Shop = () => {
+  const [imgData] = useState(getProductImages());
+  const [filterd, setFilterd] = useState([]);
+  const [priceFiltring, setPriceFiltering] = useState(imgData);
+  const [categoryFiltering, categoryDispatch] = useReducer(
+    categoryReducer,
+    imgData,
+    categoryInit
+  );
+  const [colorFiltring, colorDispatch] = useReducer(
+    colorReducer,
+    imgData,
+    colorInit
+  );
+
+  useEffect(() => {
+    let data = categoryFiltering.filter((category) => {
+      return colorFiltring.indexOf(category) > -1;
+    });
+
+    data = data.filter((e) => {
+      return priceFiltring.indexOf(e) > -1;
+    });
+
+    setFilterd(data);
+  }, [categoryFiltering, colorFiltring, priceFiltring]);
   const classes = useStyle();
+
   return (
-    <div className={classes.shopMain}>
-      <Container className={classes.container}>
-        <div>
-          <Filtering />
-        </div>
-        <Box className={classes.shopBox}>
-          {getProductImages().map((image) => {
-            return <ProductCard key={image.imgSrc} imgData={image} />;
-          })}
-        </Box>
-      </Container>
-    </div>
+    <React.Fragment>
+      <div className={classes.shopMain}>
+        <SearchBox />
+        <Container className={classes.container}>
+          <Filtering
+            imgData={imgData}
+            categoryDispatch={categoryDispatch}
+            colorDispatch={colorDispatch}
+            setPriceFiltering={setPriceFiltering}
+          />
+
+          <Box display="flex" flexDirection="column" width="75%">
+            <Sort productsLength={filterd.length} />
+            <Box className={classes.shopBox}>
+              {filterd.map((image) => {
+                return <ProductCard key={image.imgSrc} imgData={image} />;
+              })}
+            </Box>
+          </Box>
+        </Container>
+      </div>
+    </React.Fragment>
   );
 };
 

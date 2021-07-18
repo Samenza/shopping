@@ -1,42 +1,96 @@
 import React from "react";
-import { Typography, makeStyles } from "@material-ui/core";
+import { Typography, makeStyles, Box } from "@material-ui/core";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
-const useStyle = makeStyles({
-  dot: {
-    cursor: "pointer",
-  },
-});
+export const colorInit = (initial) => {
+  return initial;
+};
+export const colorReducer = (state, action) => {
+  switch (action.type) {
+    case "All":
+      return action.payload.filter((e) => e.color !== "All");
+    case "Red":
+      return action.payload.filter((e) => e.color === "Red");
+    case "Blue":
+      return action.payload.filter((e) => e.color === "Blue");
+    case "White":
+      return action.payload.filter((e) => e.color === "White");
+    case "Brown":
+      return action.payload.filter((e) => e.color === "Brown");
+    case "Orange":
+      return action.payload.filter((e) => e.color === "Orange");
+    case "Gray":
+      return action.payload.filter((e) => e.color === "Gray");
+    case "Black":
+      return action.payload.filter((e) => e.color === "Black");
+    default:
+      return state;
+  }
+};
 
-const FiltringColor = () => {
+const FiltringColor = ({ colorDispatch, imgData }) => {
   const classes = useStyle();
+  const filterType = (color) => {
+    colorDispatch({ type: color, payload: imgData });
+  };
   return (
     <React.Fragment>
-      <Typography variant="h5">Color</Typography>
-      <Typography variant="body1">All</Typography>
-      <FiberManualRecordIcon
-        className={classes.dot}
-        style={{ color: "#0000ffaa" }}
-      />
-      <FiberManualRecordIcon
-        className={classes.dot}
-        style={{ color: "#ffffff" }}
-      />
-      <FiberManualRecordIcon className={classes.dot} style={{ color: "red" }} />
-      <FiberManualRecordIcon
-        className={classes.dot}
-        style={{ color: "#a53c00" }}
-      />
-      <FiberManualRecordIcon
-        className={classes.dot}
-        style={{ color: "#ff7300" }}
-      />
-      <FiberManualRecordIcon
-        className={classes.dot}
-        style={{ color: "#b3b3b3" }}
-      />
+      <Typography variant="h6">Color</Typography>
+      <Typography variant="body1" onClick={() => filterType("All")}>
+        All
+      </Typography>
+      <Box className={classes.colors}>
+        <FiberManualRecordIcon
+          className={classes.dot}
+          style={{ color: "#0000ffaa" }}
+          onClick={() => filterType("Blue")}
+        />
+        <FiberManualRecordIcon
+          className={classes.dot}
+          style={{ color: "#ffffff" }}
+          onClick={() => filterType("White")}
+        />
+        <FiberManualRecordIcon
+          className={classes.dot}
+          style={{ color: "#ff0000" }}
+          onClick={() => filterType("Red")}
+        />
+        <FiberManualRecordIcon
+          className={classes.dot}
+          style={{ color: "#a53c00" }}
+          onClick={() => filterType("Brown")}
+        />
+        <FiberManualRecordIcon
+          className={classes.dot}
+          style={{ color: "#ff7300" }}
+          onClick={() => filterType("Orange")}
+        />
+        <FiberManualRecordIcon
+          className={classes.dot}
+          style={{ color: "#b3b3b3" }}
+          onClick={() => filterType("Gray")}
+        />
+        <FiberManualRecordIcon
+          className={classes.dot}
+          style={{ color: "#000000" }}
+          onClick={() => filterType("Black")}
+        />
+      </Box>
     </React.Fragment>
   );
 };
+const useStyle = makeStyles({
+  dot: {
+    cursor: "pointer",
+    "&:hover": {
+      fontSize: "2rem",
+    },
+  },
+  colors: {
+    display: "flex",
+    alignItems: "center",
+    height: "2rem",
+  },
+});
 
 export default FiltringColor;

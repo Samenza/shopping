@@ -1,15 +1,15 @@
 import React from "react";
 import { Box, makeStyles, Divider } from "@material-ui/core";
 
-import Category from "./filteringCategory/Category";
+import FilteringCategory from "./filteringCategory/FiltringCategory";
 import FiltringColor from "./filtringColor/FiltringColor";
-
+import FiltringPrice from "./filtringPrice/FiltringPrice";
 const useStyle = makeStyles({
   filterBox: {
     width: "35vh",
     position: "sticky",
     top: "1rem",
-    marginTop: "5rem",
+    marginTop: "2rem",
     "& p": {
       padding: "3px",
       color: "#367599",
@@ -24,13 +24,25 @@ const useStyle = makeStyles({
     margin: "20px 0 ",
   },
 });
-const Filtering = () => {
+
+const Filtering = ({
+  colorDispatch,
+  categoryDispatch,
+  setPriceFiltering,
+  imgData,
+}) => {
   const classes = useStyle();
+
   return (
     <Box className={classes.filterBox}>
-      <Category />
+      <FilteringCategory
+        categoryDispatch={categoryDispatch}
+        imgData={imgData}
+      />
       <Divider className={classes.divider} />
-      <FiltringColor />
+      <FiltringColor colorDispatch={colorDispatch} imgData={imgData} />
+      <Divider className={classes.divider} />
+      <FiltringPrice imgData={imgData} setPriceFiltering={setPriceFiltering} />
     </Box>
   );
 };
