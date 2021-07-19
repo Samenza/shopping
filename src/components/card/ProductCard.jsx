@@ -36,12 +36,8 @@ const ProductCard = ({ imgData }) => {
         />
         <CardContent>
           <Box display="flex" justifyContent="space-between">
-            <Typography className="img_info" variant="body2">
-              {imgData.name}
-            </Typography>
-            <Typography className="img_info" variant="body2">
-              {imgData.price} $
-            </Typography>
+            <Typography variant="body2">{imgData.name}</Typography>
+            <Typography variant="body2">{imgData.price} $</Typography>
           </Box>
         </CardContent>
       </CardActionArea>

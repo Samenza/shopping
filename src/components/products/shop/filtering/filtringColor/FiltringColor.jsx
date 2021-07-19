@@ -2,6 +2,23 @@ import React from "react";
 import { Typography, makeStyles, Box } from "@material-ui/core";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
+const useStyle = makeStyles((theme) => ({
+  dot: {
+    cursor: "pointer",
+    "&:hover": {
+      fontSize: "2rem",
+    },
+  },
+  colors: {
+    display: "flex",
+    height: "2rem",
+    [theme.breakpoints.down("sm")]: {
+      flexWrap: "wrap",
+      width: "3rem",
+    },
+  },
+}));
+
 export const colorInit = (initial) => {
   return initial;
 };
@@ -34,7 +51,7 @@ const FiltringColor = ({ colorDispatch, imgData }) => {
     colorDispatch({ type: color, payload: imgData });
   };
   return (
-    <React.Fragment>
+    <Box display="flex" flexDirection="column">
       <Typography variant="h6">Color</Typography>
       <Typography variant="body1" onClick={() => filterType("All")}>
         All
@@ -76,21 +93,8 @@ const FiltringColor = ({ colorDispatch, imgData }) => {
           onClick={() => filterType("Black")}
         />
       </Box>
-    </React.Fragment>
+    </Box>
   );
 };
-const useStyle = makeStyles({
-  dot: {
-    cursor: "pointer",
-    "&:hover": {
-      fontSize: "2rem",
-    },
-  },
-  colors: {
-    display: "flex",
-    alignItems: "center",
-    height: "2rem",
-  },
-});
 
 export default FiltringColor;

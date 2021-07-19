@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
+import { Typography, Box } from "@material-ui/core";
 
 export function categoryInit(initial) {
   return initial;
@@ -40,7 +40,7 @@ const FilteringCategory = ({ categoryDispatch, imgData }) => {
   };
 
   return (
-    <React.Fragment>
+    <Box display="flex" flexDirection="column">
       <Typography variant="h6">Category</Typography>
       <Typography onClick={() => filterType("All")} variant="body1">
         All
@@ -57,7 +57,7 @@ const FilteringCategory = ({ categoryDispatch, imgData }) => {
       <Typography onClick={() => filterType("Office")} variant="body1">
         Office
       </Typography>
-    </React.Fragment>
+    </Box>
   );
 };
 

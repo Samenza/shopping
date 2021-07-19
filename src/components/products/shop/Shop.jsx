@@ -17,26 +17,35 @@ import {
 } from "./filtering/filtringColor/FiltringColor";
 
 import { makeStyles, Container, Box } from "@material-ui/core";
+import ListModeCard from "./../../card/ListModeCard";
 
-const useStyle = makeStyles({
+const useStyle = makeStyles((theme) => ({
   container: {
     display: "flex",
     marginTop: "2rem",
     minHeight: "75vh",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      alignItems: "center",
+    },
   },
-  shopMain: { backgroundColor: "#ececec", width: "100%" },
+  shopMain: {
+    backgroundColor: "#f1f1f1",
+    width: "100%",
+  },
   shopBox: {
     width: "100%",
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
   },
-});
+}));
 
 const Shop = () => {
   const [imgData] = useState(getProductImages());
   const [filterd, setFilterd] = useState([]);
   const [priceFiltring, setPriceFiltering] = useState(imgData);
+  const [productsViewMode, setProductsViewMode] = useState("Module");
   const [categoryFiltering, categoryDispatch] = useReducer(
     categoryReducer,
     imgData,
@@ -78,10 +87,16 @@ const Shop = () => {
               productsLength={filterd.length}
               setFilterd={setFilterd}
               filterd={filterd}
+              setProductsViewMode={setProductsViewMode}
+              productsViewMode={productsViewMode}
             />
             <Box className={classes.shopBox}>
               {filterd.map((image) => {
-                return <ProductCard key={image.imgSrc} imgData={image} />;
+                return productsViewMode === "Module" ? (
+                  <ProductCard imgData={image} key={image.imgSrc} />
+                ) : (
+                  <ListModeCard key={image.imgSrc} imgData={image} />
+                );
               })}
             </Box>
           </Box>

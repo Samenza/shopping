@@ -7,22 +7,27 @@ import {
   Menu,
   MenuItem,
   Typography,
+  IconButton,
 } from "@material-ui/core";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import ViewModuleRoundedIcon from "@material-ui/icons/ViewModuleRounded";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+
 const useStyle = makeStyles({
   icon: {
     fontSize: 30,
-    color: "#141414e3",
-    paddingRight: "10px",
+
+    "&:hover": {
+      color: "#cf7748",
+    },
   },
   divider: {
     width: "2px",
+    height: "5vh",
     margin: "0 1rem",
   },
-  Box: {
+  box: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -30,12 +35,24 @@ const useStyle = makeStyles({
   },
   sortIcon: {
     textTransform: "none",
+    "&:hover": {
+      color: "#cf7748",
+    },
   },
   sortIconList: {
     marginTop: "2.5rem",
+    "&:hover": {
+      color: "#cf7748",
+    },
   },
 });
-const Sort = ({ productsLength, setFilterd, filterd }) => {
+const Sort = ({
+  productsLength,
+  setFilterd,
+  filterd,
+  setProductsViewMode,
+  productsViewMode,
+}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [sort, setSort] = useState("Name");
   const [sortIcon] = useState([<ArrowDropDownIcon />, <ArrowDropUpIcon />]);
@@ -63,16 +80,16 @@ const Sort = ({ productsLength, setFilterd, filterd }) => {
         let B = b.name.toUpperCase();
         return A < B ? -1 : 1;
       });
-
       setFilterd(data);
     }
+
     if (sort === "Price") {
       let data = [...filterd].sort((a, b) => {
         return a.price - b.price;
       });
-
       setFilterd(data);
     }
+
     if (sortIconChange === 0) {
       let data = [...filterd];
       data.reverse();
@@ -81,13 +98,24 @@ const Sort = ({ productsLength, setFilterd, filterd }) => {
   };
 
   return (
-    <Box className={classes.Box}>
-      <FormatListBulletedIcon className={classes.icon} />
-      <ViewModuleRoundedIcon className={classes.icon} />
+    <Box className={classes.box}>
+      <Box>
+        <IconButton
+          color={productsViewMode === "Module" ? "secondary" : "inherit"}
+          onClick={() => setProductsViewMode("Module")}
+        >
+          <ViewModuleRoundedIcon className={classes.icon} />
+        </IconButton>
+        <IconButton
+          color={productsViewMode === "List" ? "secondary" : "inherit"}
+          onClick={() => setProductsViewMode("List")}
+        >
+          <FormatListBulletedIcon className={classes.icon} />
+        </IconButton>
+      </Box>
       <Divider orientation="vertical" className={classes.divider} />
       <Typography variant="body1"> {productsLength} Products Found</Typography>
       <Divider orientation="vertical" className={classes.divider} />
-
       <Button onClick={handleClick} className={classes.sortIcon}>
         <Typography variant="body1"> Sort By</Typography>
         <ArrowDropDownIcon />
