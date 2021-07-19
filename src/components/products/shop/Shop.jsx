@@ -74,7 +74,11 @@ const Shop = () => {
           />
 
           <Box display="flex" flexDirection="column" width="75%">
-            <Sort productsLength={filterd.length} />
+            <Sort
+              productsLength={filterd.length}
+              setFilterd={setFilterd}
+              filterd={filterd}
+            />
             <Box className={classes.shopBox}>
               {filterd.map((image) => {
                 return <ProductCard key={image.imgSrc} imgData={image} />;

@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-
-import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
-import ViewModuleRoundedIcon from "@material-ui/icons/ViewModuleRounded";
 import {
   Button,
   Box,
@@ -11,8 +8,10 @@ import {
   MenuItem,
   Typography,
 } from "@material-ui/core";
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
+import ViewModuleRoundedIcon from "@material-ui/icons/ViewModuleRounded";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 const useStyle = makeStyles({
   icon: {
     fontSize: 30,
@@ -29,10 +28,19 @@ const useStyle = makeStyles({
     alignItems: "center",
     width: "100%",
   },
+  sortIcon: {
+    textTransform: "none",
+  },
+  sortIconList: {
+    marginTop: "2.5rem",
+  },
 });
-const Sort = ({ productsLength }) => {
-  let classes = useStyle();
+const Sort = ({ productsLength, setFilterd, filterd }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [sort, setSort] = useState("Name");
+  const [sortIcon] = useState([<ArrowDropDownIcon />, <ArrowDropUpIcon />]);
+  const [sortIconChange, setSortIconChange] = useState();
+  let classes = useStyle();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -42,6 +50,36 @@ const Sort = ({ productsLength }) => {
     setAnchorEl(null);
   };
 
+  const sortDisplayNameHandle = (e) => {
+    setSort(e.target.innerText);
+    setAnchorEl(null);
+  };
+  const sortDataHandle = () => {
+    sortIconChange === 0 ? setSortIconChange(1) : setSortIconChange(0);
+
+    if (sort === "Name") {
+      let data = [...filterd].sort((a, b) => {
+        let A = a.name.toUpperCase();
+        let B = b.name.toUpperCase();
+        return A < B ? -1 : 1;
+      });
+
+      setFilterd(data);
+    }
+    if (sort === "Price") {
+      let data = [...filterd].sort((a, b) => {
+        return a.price - b.price;
+      });
+
+      setFilterd(data);
+    }
+    if (sortIconChange === 0) {
+      let data = [...filterd];
+      data.reverse();
+      setFilterd(data);
+    }
+  };
+
   return (
     <Box className={classes.Box}>
       <FormatListBulletedIcon className={classes.icon} />
@@ -49,14 +87,24 @@ const Sort = ({ productsLength }) => {
       <Divider orientation="vertical" className={classes.divider} />
       <Typography variant="body1"> {productsLength} Products Found</Typography>
       <Divider orientation="vertical" className={classes.divider} />
-      <Button onClick={handleClick} endIcon={<ArrowDropDownIcon />}>
-        <Typography variant="body1">Sort By</Typography>
+
+      <Button onClick={handleClick} className={classes.sortIcon}>
+        <Typography variant="body1"> Sort By</Typography>
+        <ArrowDropDownIcon />
       </Button>
-      <Menu anchorEl={anchorEl} open={anchorEl} onClose={handleClose}>
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        classes={{ paper: classes.sortIconList }}
+      >
+        <MenuItem onClick={sortDisplayNameHandle}>Name</MenuItem>
+        <MenuItem onClick={sortDisplayNameHandle}>Price</MenuItem>
       </Menu>
+      <Button className={classes.sortIcon} onClick={sortDataHandle}>
+        <Typography variant="body1">{sort}</Typography>
+        {sortIcon[sortIconChange]}
+      </Button>
     </Box>
   );
 };
