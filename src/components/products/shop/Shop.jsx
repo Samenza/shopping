@@ -82,7 +82,7 @@ const Shop = () => {
           />
 
           <Box display="flex" flexDirection="column" width="75%">
-            <SearchBox />
+            <SearchBox imgData={imgData} setFilterd={setFilterd} />
             <Sort
               productsLength={filterd.length}
               setFilterd={setFilterd}
