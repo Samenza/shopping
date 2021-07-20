@@ -9,7 +9,7 @@ const useStyle = makeStyles((theme) => ({
     width: "35vh",
     position: "sticky",
     top: "1rem",
-    marginTop: "2rem",
+    marginTop: "10rem",
     "& p": {
       padding: "3px",
       color: "#367599",
@@ -44,16 +44,22 @@ const Filtering = ({
   const classes = useStyle();
 
   return (
-    <Box className={classes.filterBox}>
-      <FilteringCategory
-        categoryDispatch={categoryDispatch}
-        imgData={imgData}
-      />
-      <Divider className={classes.divider} />
-      <FiltringColor colorDispatch={colorDispatch} imgData={imgData} />
-      <Divider className={classes.divider} />
-      <FiltringPrice imgData={imgData} setPriceFiltering={setPriceFiltering} />
-    </Box>
+    //this div is for sticky position
+    <div>
+      <Box className={classes.filterBox}>
+        <FilteringCategory
+          categoryDispatch={categoryDispatch}
+          imgData={imgData}
+        />
+        <Divider className={classes.divider} />
+        <FiltringColor colorDispatch={colorDispatch} imgData={imgData} />
+        <Divider className={classes.divider} />
+        <FiltringPrice
+          imgData={imgData}
+          setPriceFiltering={setPriceFiltering}
+        />
+      </Box>
+    </div>
   );
 };
 

@@ -10,12 +10,11 @@ import SearchIcon from "@material-ui/icons/Search";
 
 const useStyle = makeStyles((theme) => ({
   paper: {
-    margin: "auto",
-    width: "40%",
+    width: "80%",
     display: "flex",
     justifyContent: "space-between",
     padding: "0.2rem",
-    marginTop: "1.5rem ",
+    margin: " 1.5rem auto",
 
     [theme.breakpoints.down("sm")]: {
       width: "80%",

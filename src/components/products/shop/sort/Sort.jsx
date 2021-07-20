@@ -116,10 +116,16 @@ const Sort = ({
       <Divider orientation="vertical" className={classes.divider} />
       <Typography variant="body1"> {productsLength} Products Found</Typography>
       <Divider orientation="vertical" className={classes.divider} />
-      <Button onClick={handleClick} className={classes.sortIcon}>
-        <Typography variant="body1"> Sort By</Typography>
-        <ArrowDropDownIcon />
-      </Button>
+      <Box>
+        <Button onClick={handleClick} className={classes.sortIcon}>
+          <Typography variant="body1"> Sort By</Typography>
+          <ArrowDropDownIcon />
+        </Button>
+        <Button className={classes.sortIcon} onClick={sortDataHandle}>
+          <Typography variant="body1">{sort}</Typography>
+          {sortIcon[sortIconChange]}
+        </Button>
+      </Box>
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
@@ -129,10 +135,6 @@ const Sort = ({
         <MenuItem onClick={sortDisplayNameHandle}>Name</MenuItem>
         <MenuItem onClick={sortDisplayNameHandle}>Price</MenuItem>
       </Menu>
-      <Button className={classes.sortIcon} onClick={sortDataHandle}>
-        <Typography variant="body1">{sort}</Typography>
-        {sortIcon[sortIconChange]}
-      </Button>
     </Box>
   );
 };

@@ -23,7 +23,7 @@ const useStyle = makeStyles((theme) => ({
   container: {
     display: "flex",
     marginTop: "2rem",
-    minHeight: "75vh",
+    minHeight: "90vh",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       alignItems: "center",
@@ -73,7 +73,6 @@ const Shop = () => {
   return (
     <React.Fragment>
       <div className={classes.shopMain}>
-        <SearchBox />
         <Container className={classes.container}>
           <Filtering
             imgData={imgData}
@@ -83,6 +82,7 @@ const Shop = () => {
           />
 
           <Box display="flex" flexDirection="column" width="75%">
+            <SearchBox />
             <Sort
               productsLength={filterd.length}
               setFilterd={setFilterd}
