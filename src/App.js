@@ -22,6 +22,7 @@ let theme = createTheme({
     body2: {
       fontFamily: ["Inter", "sans-serif"],
       fontSize: 17,
+      lineHeight: "1.8",
     },
     h2: {
       fontFamily: ["Work Sans", "sans-serif"],

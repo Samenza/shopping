@@ -1,3 +1,6 @@
+import React from "react";
+import { withRouter } from "react-router-dom";
+
 import {
   Card,
   CardActionArea,
@@ -7,7 +10,6 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-import React from "react";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -22,10 +24,14 @@ const useStyle = makeStyles((theme) => ({
   img: { objectPosition: "50% 62%" },
 }));
 
-const ProductCard = ({ imgData }) => {
+const ProductCard = ({ imgData, history }) => {
   const classes = useStyle();
+
+  const routeID = () => {
+    history.push(`./Products/${imgData.id}`);
+  };
   return (
-    <Card classes={{ root: classes.root }}>
+    <Card classes={{ root: classes.root }} onClick={routeID}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -45,4 +51,4 @@ const ProductCard = ({ imgData }) => {
   );
 };
 
-export default ProductCard;
+export default withRouter(ProductCard);

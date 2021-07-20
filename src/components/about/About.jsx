@@ -39,7 +39,7 @@ const About = () => {
         <Box display="flex" flexDirection="column" m={4}>
           <Typography variant="h2">Our story</Typography>
           <Divider />
-          <Typography variant="body1" className={classes.text}>
+          <Typography variant="body2" className={classes.text}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
             voluptates ducimus expedita eos, pariatur consequatur, ad fugit
             animi repellendus molestiae omnis eius aliquid quas inventore

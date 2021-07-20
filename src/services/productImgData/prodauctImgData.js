@@ -7,6 +7,7 @@ export default function getProductImages() {
       name: "sofa",
       category: "LivingRoom",
       color: "Gray",
+      id: "CaLiCGS",
     },
     {
       imgSrc: "../images/shopping/WideLoungeChair.jpg",
@@ -15,6 +16,7 @@ export default function getProductImages() {
       name: "Wide Chair",
       category: "BedRoom",
       color: "Brown",
+      id: "CaBeCBWi",
     },
     {
       imgSrc: "../images/shopping/LeatherSwivelLoungeChair.jpg",
@@ -23,6 +25,7 @@ export default function getProductImages() {
       name: "Leather Chair",
       category: "BedRoom",
       color: "White",
+      id: "CaBeCwNle",
     },
     {
       imgSrc: "../images/shopping/Wide Tufted.jpg",
@@ -31,6 +34,7 @@ export default function getProductImages() {
       name: "Wide Tufted",
       category: "LivingRoom",
       color: "Gray",
+      id: "CliCGrNwi",
     },
     {
       imgSrc: "../images/shopping/Velvet Square Arm Loveseat.jpg",
@@ -39,6 +43,7 @@ export default function getProductImages() {
       name: "Velvet Loveseat",
       category: "LivingRoom",
       color: "White",
+      id: "CliCwNve",
     },
     {
       imgSrc: "../images/shopping/Door Mirrored Cabinet.jpg",
@@ -47,6 +52,7 @@ export default function getProductImages() {
       name: "DoorCabinet",
       category: "LivingRoom",
       color: "Brown",
+      id: "CliCBrNdo",
     },
     {
       name: "Dining Table",
@@ -55,6 +61,7 @@ export default function getProductImages() {
       alt: "DiningTable",
       category: "Dining",
       color: "Gray",
+      id: "CdiCgrNdi",
     },
     {
       imgSrc: "../images/shopping/Drawer Accent Chest.jpg",
@@ -63,6 +70,7 @@ export default function getProductImages() {
       name: "Drawer Chest",
       category: "LivingRoom",
       color: "Brown",
+      id: "CliCBrNdr",
     },
     {
       imgSrc: "../images/shopping/Mid-Century Modern Sofa.jpg",
@@ -71,6 +79,7 @@ export default function getProductImages() {
       name: "Modern Sofa",
       category: "LivingRoom",
       color: "Blue",
+      id: "CliCblNmo",
     },
     {
       imgSrc: "../images/shopping/Round Abstract Pouf Ottoman.jpg",
@@ -79,6 +88,7 @@ export default function getProductImages() {
       name: "Round Abstract",
       category: "LivingRoom",
       color: "Orange",
+      id: "CliCorNro",
     },
     {
       imgSrc: "../images/shopping/Mcgovern 14'' Steel Bed Frame.jpg",
@@ -87,6 +97,7 @@ export default function getProductImages() {
       name: "Steel Bed Frame",
       category: "BedRoom",
       color: "Blue",
+      id: "CbeCblNst",
     },
     {
       imgSrc: "../images/shopping/Bassel 2 Piece Sofa Set.jpg",
@@ -95,6 +106,7 @@ export default function getProductImages() {
       name: "Bassel Sofa Set",
       category: "LivingRoom",
       color: "Blue",
+      id: "CliCblNbas",
     },
     {
       imgSrc: "../images/shopping/Folding Room Divider.jpg",
@@ -103,6 +115,7 @@ export default function getProductImages() {
       name: "Room Divider",
       category: "BedRoom",
       color: "Brown",
+      id: "CbeCbrNrod",
     },
     {
       imgSrc: "../images/shopping/Door Accent Cabinet.jpg",
@@ -111,6 +124,7 @@ export default function getProductImages() {
       name: "Door Cabinet",
       category: "LivingRoom",
       color: "Brown",
+      id: "CliCbrNdoc",
     },
     {
       imgSrc: "../images/shopping/Lynmouth TV Stand for TVs up to.jpg",
@@ -119,6 +133,7 @@ export default function getProductImages() {
       name: "TV Stand",
       category: "LivingRoom",
       color: "Black",
+      id: "CliCblaNts",
     },
     {
       imgSrc: "../images/shopping/Chaise Longue With Armrests.jpg",
@@ -127,6 +142,7 @@ export default function getProductImages() {
       name: "Chaise Longue",
       category: "LivingRoom",
       color: "Red",
+      id: "CliCreNchl",
     },
     {
       name: "Shelf",
@@ -135,6 +151,7 @@ export default function getProductImages() {
       alt: "shelf",
       category: "Office",
       color: "Black",
+      id: "CofCblaNshe",
     },
     {
       imgSrc:
@@ -144,6 +161,7 @@ export default function getProductImages() {
       name: "Platform Bed",
       category: "BedRoom",
       color: "White",
+      id: "CbeCwhNplb",
     },
     {
       imgSrc: "../images/shopping/Living Room Set.jpg",
@@ -152,6 +170,7 @@ export default function getProductImages() {
       name: "Living Room Set",
       category: "LivingRoom",
       color: "Gray",
+      id: "CliCgrNlir",
     },
     {
       imgSrc: "../images/shopping/Faux Leather Recessed Arm Sofa.jpg",
@@ -160,6 +179,17 @@ export default function getProductImages() {
       name: "Leather Sofa",
       category: "LivingRoom",
       color: "Orange",
+      id: "CliCorNles",
+      otherImgs: [
+        { src: "../images/shopping/Faux Leather Recessed Arm Sofa.jpg", id: 1 },
+        { src: "../images/shopping/leather Sofa/1.jpg", id: 2 },
+        { src: "../images/shopping/leather Sofa/2.jpg", id: 3 },
+        { src: "../images/shopping/leather Sofa/3.jpg", id: 4 },
+        { src: "../images/shopping/leather Sofa/4.jpg", id: 5 },
+        { src: "../images/shopping/leather Sofa/5.jpg", id: 6 },
+      ],
+      available: "In Stock",
+      brand: "cassart",
     },
     {
       imgSrc: "../images/shopping/Middletown Chaise Lounge.jpg",
@@ -168,6 +198,7 @@ export default function getProductImages() {
       name: "Chaise Lounge",
       category: "LivingRoom",
       color: "Black",
+      id: "CliCblaNchl",
     },
     {
       name: "Side Table",
@@ -176,6 +207,7 @@ export default function getProductImages() {
       alt: "sideTable",
       category: "Office",
       color: "Gray",
+      id: "CofCgrNsit",
     },
   ];
 }
