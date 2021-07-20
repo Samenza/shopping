@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Box } from "@material-ui/core";
 
 export function categoryInit(initial) {
@@ -35,28 +35,34 @@ export const categoryReducer = (state, action) => {
 };
 
 const FilteringCategory = ({ categoryDispatch, imgData }) => {
-  const filterType = (categoryType) => {
+  const [active, setActive] = useState("All");
+  const filterType = (categoryType, e) => {
     categoryDispatch({ type: categoryType, payload: imgData });
+    setActive(e.target.innerText);
   };
 
+  const [buttons] = useState([
+    { text: "All", variant: "body1" },
+    { text: "LivingRoom", variant: "body1" },
+    { text: "BedRoom", variant: "body1" },
+    { text: "Dining", variant: "body1" },
+    { text: "Office", variant: "body1" },
+  ]);
   return (
     <Box display="flex" flexDirection="column">
       <Typography variant="h6">Category</Typography>
-      <Typography onClick={() => filterType("All")} variant="body1">
-        All
-      </Typography>
-      <Typography onClick={() => filterType("LivingRoom")} variant="body1">
-        Living Room
-      </Typography>
-      <Typography onClick={() => filterType("BedRoom")} variant="body1">
-        Bed Room
-      </Typography>
-      <Typography onClick={() => filterType("Dining")} variant="body1">
-        Dining
-      </Typography>
-      <Typography onClick={() => filterType("Office")} variant="body1">
-        Office
-      </Typography>
+      {buttons.map((item) => {
+        return (
+          <Typography
+            color={active === item.text ? "secondary" : "primary"}
+            key={item.text}
+            onClick={(e) => filterType(item.text, e)}
+            variant={item.variant}
+          >
+            {item.text}
+          </Typography>
+        );
+      })}
     </Box>
   );
 };

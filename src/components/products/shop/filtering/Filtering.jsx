@@ -1,9 +1,25 @@
 import React from "react";
-import { Box, makeStyles, Divider } from "@material-ui/core";
+import {
+  Box,
+  makeStyles,
+  Divider,
+  createTheme,
+  ThemeProvider,
+} from "@material-ui/core";
 
 import FilteringCategory from "./filteringCategory/FiltringCategory";
 import FiltringColor from "./filtringColor/FiltringColor";
 import FiltringPrice from "./filtringPrice/FiltringPrice";
+
+//this theme is for active items in filtering
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#1983b4",
+    },
+    secondary: { main: "#cf7748" },
+  },
+});
 const useStyle = makeStyles((theme) => ({
   filterBox: {
     width: "35vh",
@@ -12,7 +28,6 @@ const useStyle = makeStyles((theme) => ({
     marginTop: "10rem",
     "& p": {
       padding: "3px",
-      color: "#367599",
       cursor: "pointer",
       width: "fit-content",
       "&:hover": {
@@ -45,21 +60,23 @@ const Filtering = ({
 
   return (
     //this div is for sticky position
-    <div>
-      <Box className={classes.filterBox}>
-        <FilteringCategory
-          categoryDispatch={categoryDispatch}
-          imgData={imgData}
-        />
-        <Divider className={classes.divider} />
-        <FiltringColor colorDispatch={colorDispatch} imgData={imgData} />
-        <Divider className={classes.divider} />
-        <FiltringPrice
-          imgData={imgData}
-          setPriceFiltering={setPriceFiltering}
-        />
-      </Box>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Box className={classes.filterBox}>
+          <FilteringCategory
+            categoryDispatch={categoryDispatch}
+            imgData={imgData}
+          />
+          <Divider className={classes.divider} />
+          <FiltringColor colorDispatch={colorDispatch} imgData={imgData} />
+          <Divider className={classes.divider} />
+          <FiltringPrice
+            imgData={imgData}
+            setPriceFiltering={setPriceFiltering}
+          />
+        </Box>
+      </div>
+    </ThemeProvider>
   );
 };
 
