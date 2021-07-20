@@ -11,7 +11,6 @@ const HomePage = () => {
       <Header />
       <MainPageProduct />
       <Custom />
-      <Contact />
     </React.Fragment>
   );
 };

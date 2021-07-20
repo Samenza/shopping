@@ -67,7 +67,7 @@ const Header = () => {
           height="200"
           component="img"
           image="../Images/HomeImages/HomeHeader.jfif"
-        ></CardMedia>
+        />
       </Hidden>
       <Box
         display="flex"

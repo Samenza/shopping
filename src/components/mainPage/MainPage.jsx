@@ -9,6 +9,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 
 import "./main.css";
 import { useEffect } from "react";
+import Contact from "./contact/Contact";
 const MainPage = (props) => {
   const [mainPageClass, setMainPageClass] = useState("main__page");
   const [navBarBackgound, setNavBarBackgound] = useState("");
@@ -31,6 +32,7 @@ const MainPage = (props) => {
         <Route exact path="/Products" component={Products} />
         <Route exact path="/About" component={About} />
       </Switch>
+      <Contact />
       <Footer />
     </div>
   );

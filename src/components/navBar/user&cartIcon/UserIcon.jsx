@@ -30,12 +30,16 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const UserIcon = () => {
+const UserIcon = ({ setShow }) => {
   const classes = useStyle();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
-  let responseBottonName = (
+  const closeDrawer = () => {
+    setShow(false);
+  };
+
+  let onResponseBottonAddName = (
     <React.Fragment>
       <NavLink className="nav_items" to="/Cart">
         <Button disableRipple className={classes.icon}>
@@ -52,9 +56,9 @@ const UserIcon = () => {
     </React.Fragment>
   );
   if (matches) {
-    responseBottonName = (
+    onResponseBottonAddName = (
       <React.Fragment>
-        <NavLink className="nav_items" to="/Cart">
+        <NavLink className="nav_items" to="/Cart" onClick={closeDrawer}>
           <Button
             disableRipple
             className={classes.icon}
@@ -67,7 +71,7 @@ const UserIcon = () => {
             Cart
           </Button>
         </NavLink>
-        <NavLink className="nav_items" to="/Authenticate">
+        <NavLink className="nav_items" to="/Authenticate" onClick={closeDrawer}>
           <Button
             className={classes.icon}
             variant="text"
@@ -81,7 +85,7 @@ const UserIcon = () => {
   }
   return (
     <Box display="flex" className={classes.main}>
-      {responseBottonName}
+      {onResponseBottonAddName}
     </Box>
   );
 };

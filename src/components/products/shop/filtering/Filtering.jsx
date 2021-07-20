@@ -22,10 +22,11 @@ const theme = createTheme({
 });
 const useStyle = makeStyles((theme) => ({
   filterBox: {
-    width: "35vh",
     position: "sticky",
+    width: "35vh",
     top: "1rem",
-    marginTop: "10rem",
+    margin: "10rem 0 ",
+
     "& p": {
       padding: "3px",
       cursor: "pointer",

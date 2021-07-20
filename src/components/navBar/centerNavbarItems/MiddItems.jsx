@@ -32,10 +32,14 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const MidItems = () => {
+const MidItems = ({ setShow }) => {
   const classes = useStyle();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const closeDrawer = () => {
+    setShow(false);
+  };
 
   return (
     <Box
@@ -46,7 +50,12 @@ const MidItems = () => {
     >
       {matches ? (
         <React.Fragment>
-          <NavLink className="nav_items nav_items_font" exact to="/">
+          <NavLink
+            className="nav_items nav_items_font"
+            exact
+            to="/"
+            onClick={closeDrawer}
+          >
             <Button
               className={classes.icon}
               startIcon={<HomeIcon style={{ fontSize: 30 }} />}
@@ -54,7 +63,11 @@ const MidItems = () => {
               Home
             </Button>
           </NavLink>
-          <NavLink className="nav_items nav_items_font" to="/Products">
+          <NavLink
+            className="nav_items nav_items_font"
+            to="/Products"
+            onClick={closeDrawer}
+          >
             <Button
               className={classes.icon}
               startIcon={<KingBedIcon style={{ fontSize: 30 }} />}
@@ -62,7 +75,11 @@ const MidItems = () => {
               Products
             </Button>
           </NavLink>
-          <NavLink className="nav_items nav_items_font" to="/About">
+          <NavLink
+            className="nav_items nav_items_font"
+            to="/About"
+            onClick={closeDrawer}
+          >
             <Button
               className={classes.icon}
               startIcon={<InfoIcon style={{ fontSize: 30 }} />}

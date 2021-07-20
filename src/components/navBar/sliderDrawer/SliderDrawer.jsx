@@ -34,9 +34,9 @@ const SliderDrawer = ({ show, setShow }) => {
         >
           <img src={logo} alt="" />
           <Divider classes={{ root: classes.line }} variant="middle" />
-          <UserIcon />
+          <UserIcon setShow={setShow} />
           <Divider className={classes.line} variant="middle" />
-          <MidItems />
+          <MidItems setShow={setShow} />
         </Box>
       </Drawer>
     </Hidden>

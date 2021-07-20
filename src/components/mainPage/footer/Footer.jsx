@@ -5,6 +5,8 @@ import CopyrightIcon from "@material-ui/icons/Copyright";
 
 const useStyle = makeStyles({
   contain: {
+    position: "relative",
+    bottom: "0",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

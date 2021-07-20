@@ -23,7 +23,7 @@ const useStyle = makeStyles((theme) => ({
   container: {
     height: "40vh",
     margin: "auto",
-    backgroundColor: "#fce7dc",
+    backgroundColor: "#eed7cb",
   },
 }));
 
