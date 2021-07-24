@@ -88,7 +88,7 @@ const Header = () => {
           ducimus eum laudantium commodi, voluptatibus recusandae at unde. Culpa
           minima corporis incidunt velit modi sunt, facilis esse aliquam.
         </Typography>
-        <Link className={classes.link} to="/Products">
+        <Link className={classes.link} to="/home/Products">
           <Button color="secondary" variant="contained">
             ShopNow
           </Button>

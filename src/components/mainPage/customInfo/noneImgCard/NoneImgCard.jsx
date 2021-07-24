@@ -13,7 +13,7 @@ const useStyle = makeStyles((theme) => ({
     maxWidth: "25%",
     textAlign: "center",
     padding: "10px",
-    backgroundColor: "#8bd1ff49",
+    backgroundColor: "#bde0e0",
     [theme.breakpoints.down("sm")]: {
       maxWidth: "100%",
       margin: "1rem",

@@ -30,7 +30,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const UserIcon = ({ setShow }) => {
+const UserIcon = ({ setShow, cart }) => {
   const classes = useStyle();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
@@ -41,14 +41,14 @@ const UserIcon = ({ setShow }) => {
 
   let onResponseBottonAddName = (
     <React.Fragment>
-      <NavLink className="nav_items" to="/Cart">
+      <NavLink className="nav_items" to="/home/cart">
         <Button disableRipple className={classes.icon}>
-          <Badge badgeContent={2} color="secondary">
+          <Badge badgeContent={cart.length} color="secondary">
             <ShoppingCartIcon style={{ fontSize: 30 }} />
           </Badge>
         </Button>
       </NavLink>
-      <NavLink className="nav_items" to="/Authenticate">
+      <NavLink className="nav_items" to="/login">
         <Button className={classes.icon} variant="text">
           <AccountBoxIcon style={{ fontSize: 30 }} />
         </Button>
@@ -58,12 +58,12 @@ const UserIcon = ({ setShow }) => {
   if (matches) {
     onResponseBottonAddName = (
       <React.Fragment>
-        <NavLink className="nav_items" to="/Cart" onClick={closeDrawer}>
+        <NavLink className="nav_items" to="/home/cart" onClick={closeDrawer}>
           <Button
             disableRipple
             className={classes.icon}
             startIcon={
-              <Badge badgeContent={2} color="secondary">
+              <Badge badgeContent={cart.length} color="secondary">
                 <ShoppingCartIcon style={{ fontSize: 30 }} />
               </Badge>
             }
@@ -71,7 +71,7 @@ const UserIcon = ({ setShow }) => {
             Cart
           </Button>
         </NavLink>
-        <NavLink className="nav_items" to="/Authenticate" onClick={closeDrawer}>
+        <NavLink className="nav_items" to="/login" onClick={closeDrawer}>
           <Button
             className={classes.icon}
             variant="text"

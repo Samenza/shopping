@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IconButton,
   InputBase,
@@ -22,6 +22,8 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 const SearchBox = ({ imgData, setFilterd }) => {
+  const [inputValue, setInputValue] = useState();
+
   const inputOnChangeHandle = (input) => {
     let finalData = [];
     let data = [...imgData];
@@ -37,6 +39,7 @@ const SearchBox = ({ imgData, setFilterd }) => {
       finalData = imgData;
     }
     setFilterd(finalData);
+    setInputValue(input);
   };
   const classes = useStyle();
   return (
@@ -47,7 +50,10 @@ const SearchBox = ({ imgData, setFilterd }) => {
           fullWidth
           onChange={(e) => inputOnChangeHandle(e)}
         />
-        <IconButton type="submit">
+        <IconButton
+          type="submit"
+          onClick={() => inputOnChangeHandle(inputValue)}
+        >
           <SearchIcon color="secondary" />
         </IconButton>
       </Paper>

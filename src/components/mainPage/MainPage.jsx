@@ -11,28 +11,43 @@ import "./main.css";
 import { useEffect } from "react";
 import Contact from "./contact/Contact";
 import ProductsMoreDetail from "./../productsMoreDetails/ProductsMoreDetail";
-const MainPage = (props) => {
+import Cart from "./../cart/Cart";
+import ScrollTop from "../../hoc/scrollTop/ScrollTop";
+const MainPage = ({ location, match }) => {
   const [mainPageClass, setMainPageClass] = useState("main__page");
   const [navBarBackgound, setNavBarBackgound] = useState("");
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    if (props.location.pathname === "/Products") {
-      setMainPageClass("");
-      setNavBarBackgound("navBarBackgound");
-    } else {
+    if (
+      location.pathname === "/Home" ||
+      location.pathname === "/home" ||
+      location.pathname === "/Home/" ||
+      location.pathname === "/home/"
+    ) {
       setMainPageClass("main__page");
       setNavBarBackgound("");
+    } else {
+      setMainPageClass("");
+      setNavBarBackgound("navBarBackgound");
     }
-  }, [props.location.pathname]);
-
+  }, [location.pathname]);
   return (
     <div className={mainPageClass}>
-      <NavBar navBarBackgound={navBarBackgound} />
+      <ScrollTop />
+      <NavBar navBarBackgound={navBarBackgound} cart={cart} />
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/Products" component={Products} />
-        <Route path="/Products/:id" component={ProductsMoreDetail} />
-        <Route path="/About" component={About} />
+        <Route exact path="/home" component={HomePage} />
+        <Route exact path={`${match.url}/products`} component={Products} />
+        <Route
+          path={`${match.url}/products/:id`}
+          render={() => <ProductsMoreDetail setCart={setCart} cart={cart} />}
+        />
+        <Route path={`${match.url}/about`} component={About} />
+        <Route
+          path={`${match.url}/cart`}
+          render={() => <Cart cart={cart} setCart={setCart} />}
+        />
       </Switch>
       <Contact />
       <Footer />

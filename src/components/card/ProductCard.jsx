@@ -28,7 +28,7 @@ const ProductCard = ({ imgData, history }) => {
   const classes = useStyle();
 
   const routeID = () => {
-    history.push(`./Products/${imgData.id}`);
+    history.push(`/home/products/${imgData.id}`);
   };
   return (
     <Card classes={{ root: classes.root }} onClick={routeID}>

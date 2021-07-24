@@ -1,5 +1,6 @@
 import MainPage from "./components/mainPage/MainPage";
-
+import { Route, Switch, Redirect } from "react-router-dom";
+import Login from "./components/auth/login/Login";
 import {
   createTheme,
   responsiveFontSizes,
@@ -9,7 +10,7 @@ import {
 let theme = createTheme({
   palette: {
     primary: { main: "#fce7dc" },
-    secondary: { main: "#cf7748" },
+    secondary: { main: "#fabb7c" },
   },
   typography: {
     subtitle1: {
@@ -46,7 +47,11 @@ theme = responsiveFontSizes(theme);
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <MainPage />
+      <Switch>
+        <Route path="/home" component={MainPage} />
+        <Route path="/Login" component={Login} />
+        <Redirect exact from="/" to="/home" />
+      </Switch>
     </ThemeProvider>
   );
 }

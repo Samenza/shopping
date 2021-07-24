@@ -25,7 +25,7 @@ const useStyle = makeStyles((theme) => ({
   navbar: {},
 }));
 
-const NavBar = ({ navBarBackgound }) => {
+const NavBar = ({ navBarBackgound, cart }) => {
   const [show, setShow] = useState(false);
   const classes = useStyle();
   const SliderShowHandle = () => {
@@ -49,7 +49,7 @@ const NavBar = ({ navBarBackgound }) => {
       </Hidden>
 
       <Hidden smDown>
-        <UserIcon />
+        <UserIcon cart={cart} />
       </Hidden>
       <Hidden mdUp>
         <Button>
@@ -60,7 +60,7 @@ const NavBar = ({ navBarBackgound }) => {
           />
         </Button>
       </Hidden>
-      <SliderDrawer show={show} setShow={setShow} />
+      <SliderDrawer show={show} setShow={setShow} cart={cart} />
     </Box>
   );
 };

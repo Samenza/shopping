@@ -15,6 +15,7 @@ import { Paper } from "@material-ui/core";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import { withRouter } from "react-router";
 
 const useStyle = makeStyles((theme) => ({
   Container: { marginTop: "5rem" },
@@ -30,9 +31,11 @@ const useStyle = makeStyles((theme) => ({
   cardMediaMain: {
     width: "100%",
     height: "65vh",
-    [theme.breakpoints.between("sm")]: {
-      position: "sticky",
-      top: "2rem",
+    [theme.breakpoints.down("sm")]: {
+      height: "60vh",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "40vh",
     },
   },
   cardMediaSmall: {
@@ -63,6 +66,7 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginTop: "3rem",
       textAlign: "center",
+      width: "100%",
     },
 
     "& hr": {
@@ -86,13 +90,14 @@ const useStyle = makeStyles((theme) => ({
     },
   },
   centerBox: {
-    width: "50%",
+    width: "70%",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     margin: "1rem 0",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
+      justifyContent: "space-around",
     },
   },
   price: {
@@ -105,20 +110,34 @@ const useStyle = makeStyles((theme) => ({
     cursor: "pointer",
   },
 }));
-const ProductsMoreDetail = ({ match }) => {
-  const [counter, setCounter] = useState(0);
+const ProductsMoreDetail = ({ setCart, match, history, cart }) => {
   const [product, setProduct] = useState();
   const [mainImg, setMainImg] = useState([]);
+  const [counter, setCounter] = useState(1);
 
   const classes = useStyle();
   useEffect(() => {
     let data = getProductImages().find(({ id }) => {
       return id === match.params.id;
     });
+    console.log(data);
     setProduct(data);
     setMainImg({ src: data.imgSrc, id: 1 });
   }, [match.params.id]);
 
+  const addToCart = () => {
+    console.log(cart.find((e) => e.name === product.name));
+    let data = {};
+    data.imgSrc = product.imgSrc;
+    data.name = product.name;
+    data.price = product.price;
+    data.itemTotlaPrice = product.price * counter;
+    data.alt = product.alt;
+    data.id = product.id;
+    data.number = counter;
+    setCart((e) => [...e, data]);
+    history.push("/home/cart");
+  };
   return (
     <div>
       {mainImg.src && (
@@ -189,24 +208,28 @@ const ProductsMoreDetail = ({ match }) => {
                 <Typography variant="body1">{product.brand}</Typography>
               </Box>
               <Divider />
-              <Box className={classes.iconContainer}>
-                <IconButton
-                  className={classes.icon}
-                  onClick={() => setCounter((c) => c + 1)}
-                  disabled={counter === 10 ? true : false}
-                >
-                  <AddIcon fontSize="large" />
-                </IconButton>
-                <Typography variant="h3">{counter} </Typography>
-                <IconButton
-                  className={classes.icon}
-                  disabled={counter === 0 ? true : false}
-                  onClick={() => setCounter((c) => c - 1)}
-                >
-                  <RemoveIcon fontSize="large" />
-                </IconButton>
-                <Button variant="contained">Buy</Button>
-              </Box>
+              {product.available === "In Stock" && (
+                <Box className={classes.iconContainer}>
+                  <IconButton
+                    className={classes.icon}
+                    onClick={() => setCounter((c) => c + 1)}
+                    disabled={counter === 10 ? true : false}
+                  >
+                    <AddIcon fontSize="large" />
+                  </IconButton>
+                  <Typography variant="h3">{counter} </Typography>
+                  <IconButton
+                    className={classes.icon}
+                    disabled={counter === 1 ? true : false}
+                    onClick={() => setCounter((c) => c - 1)}
+                  >
+                    <RemoveIcon fontSize="large" />
+                  </IconButton>
+                  <Button variant="contained" onClick={addToCart}>
+                    Add
+                  </Button>
+                </Box>
+              )}
             </Box>
           </Box>
         </Container>
@@ -215,4 +238,4 @@ const ProductsMoreDetail = ({ match }) => {
   );
 };
 
-export default ProductsMoreDetail;
+export default withRouter(ProductsMoreDetail);

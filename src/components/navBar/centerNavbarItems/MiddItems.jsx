@@ -53,7 +53,7 @@ const MidItems = ({ setShow }) => {
           <NavLink
             className="nav_items nav_items_font"
             exact
-            to="/"
+            to="/home"
             onClick={closeDrawer}
           >
             <Button
@@ -65,7 +65,7 @@ const MidItems = ({ setShow }) => {
           </NavLink>
           <NavLink
             className="nav_items nav_items_font"
-            to="/Products"
+            to="/home/products"
             onClick={closeDrawer}
           >
             <Button
@@ -77,7 +77,7 @@ const MidItems = ({ setShow }) => {
           </NavLink>
           <NavLink
             className="nav_items nav_items_font"
-            to="/About"
+            to="/home/about"
             onClick={closeDrawer}
           >
             <Button
@@ -90,13 +90,13 @@ const MidItems = ({ setShow }) => {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <NavLink className="nav_items nav_items_font" exact to="/">
+          <NavLink className="nav_items nav_items_font" exact to="/home">
             Home
           </NavLink>
-          <NavLink className="nav_items nav_items_font" to="/Products">
+          <NavLink className="nav_items nav_items_font" to="/home/products">
             Products
           </NavLink>
-          <NavLink className="nav_items nav_items_font" to="/About">
+          <NavLink className="nav_items nav_items_font" to="/home/about">
             About
           </NavLink>
         </React.Fragment>

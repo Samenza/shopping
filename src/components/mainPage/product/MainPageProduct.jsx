@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const useStyle = makeStyles({
   contain: {
-    backgroundColor: "#fce7dc",
+    backgroundColor: "#fbc7c3",
     width: "100%",
     padding: "50px 0",
     marginTop: "50px",
@@ -40,7 +40,7 @@ const MainPageProduct = () => {
               })}
           </Box>
 
-          <Link className={classes.link} to="/Products">
+          <Link className={classes.link} to="/home/Products">
             <Button
               className={classes.btn}
               color="secondary"

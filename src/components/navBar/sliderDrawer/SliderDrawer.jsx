@@ -16,7 +16,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#7c7c7c",
   },
 }));
-const SliderDrawer = ({ show, setShow }) => {
+const SliderDrawer = ({ show, setShow, cart }) => {
   const classes = useStyle();
   return (
     <Hidden mdUp>
@@ -34,7 +34,7 @@ const SliderDrawer = ({ show, setShow }) => {
         >
           <img src={logo} alt="" />
           <Divider classes={{ root: classes.line }} variant="middle" />
-          <UserIcon setShow={setShow} />
+          <UserIcon setShow={setShow} cart={cart} />
           <Divider className={classes.line} variant="middle" />
           <MidItems setShow={setShow} />
         </Box>

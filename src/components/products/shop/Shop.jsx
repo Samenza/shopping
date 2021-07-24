@@ -30,7 +30,7 @@ const useStyle = makeStyles((theme) => ({
     },
   },
   shopMain: {
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "#f6efe3",
     width: "100%",
   },
   shopBox: {

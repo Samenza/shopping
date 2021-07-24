@@ -1,4 +1,6 @@
 import React from "react";
+import { withRouter } from "react-router";
+
 import {
   Card,
   CardActionArea,
@@ -46,10 +48,13 @@ const useStyle = makeStyles((theme) => ({
     },
   },
 }));
-const ListModeCard = ({ imgData }) => {
+const ListModeCard = ({ imgData, history }) => {
   const classes = useStyle();
+  const routeID = () => {
+    history.push(`./Products/${imgData.id}`);
+  };
   return (
-    <Card className={classes.main}>
+    <Card className={classes.main} onClick={routeID}>
       <CardActionArea className={classes.container}>
         <CardMedia
           component="img"
@@ -70,4 +75,4 @@ const ListModeCard = ({ imgData }) => {
   );
 };
 
-export default ListModeCard;
+export default withRouter(ListModeCard);
