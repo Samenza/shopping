@@ -45,7 +45,7 @@ const useStyle = makeStyles((theme) => ({
   right__container: {
     minHeight: "70vh",
     minWidth: "30vw",
-    backgroundImage: "url(../images/HomeImages/HomeHeader.jfif)",
+    backgroundImage: "url(../images/HomeImages/HomeHeader.jpg)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -66,7 +66,7 @@ const Header = () => {
         <CardMedia
           height="200"
           component="img"
-          image="../Images/HomeImages/HomeHeader.jfif"
+          image="../Images/HomeImages/HomeHeader.jpg"
         />
       </Hidden>
       <Box
