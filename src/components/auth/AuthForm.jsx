@@ -22,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     "& .MuiTextField-root": { margin: "0.5rem 0" },
     "& .MuiButton-contained": { width: "50%", margin: "1rem auto 0 auto" },
+    [theme.breakpoints.down("sm")]: {
+      width: "45%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "70%",
+    },
   },
   form: {
     width: "90%",
@@ -50,6 +56,14 @@ const useStyles = makeStyles((theme) => ({
     "& a": {
       textDecoration: "none",
       color: "#000000",
+    },
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+      alignItems: "initial",
+      justifyContent: "flex-end",
+      "& > *": {
+        margin: " 0.5rem 0",
+      },
     },
   },
 }));
