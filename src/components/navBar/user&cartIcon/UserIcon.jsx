@@ -48,7 +48,7 @@ const UserIcon = ({ setShow, cart }) => {
           </Badge>
         </Button>
       </NavLink>
-      <NavLink className="nav_items" to="/login">
+      <NavLink className="nav_items" to="/auth/login">
         <Button className={classes.icon} variant="text">
           <AccountBoxIcon style={{ fontSize: 30 }} />
         </Button>
@@ -71,7 +71,7 @@ const UserIcon = ({ setShow, cart }) => {
             Cart
           </Button>
         </NavLink>
-        <NavLink className="nav_items" to="/login" onClick={closeDrawer}>
+        <NavLink className="nav_items" to="auth/login" onClick={closeDrawer}>
           <Button
             className={classes.icon}
             variant="text"

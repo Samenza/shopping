@@ -49,7 +49,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Switch>
         <Route path="/home" component={MainPage} />
-        <Route path="/Login" component={Login} />
+        <Route path="/Auth" component={Login} />
         <Redirect exact from="/" to="/home" />
       </Switch>
     </ThemeProvider>
