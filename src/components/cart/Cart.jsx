@@ -106,6 +106,7 @@ const Cart = ({ cart, setCart }) => {
                 className={classes.btn}
                 variant="contained"
                 color="secondary"
+                onClick={() => alert("there are no backend,this is a preview")}
               >
                 Purchase
               </Button>
