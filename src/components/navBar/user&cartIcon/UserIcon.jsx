@@ -71,7 +71,7 @@ const UserIcon = ({ setShow, cart }) => {
             Cart
           </Button>
         </NavLink>
-        <NavLink className="nav_items" to="auth/login" onClick={closeDrawer}>
+        <NavLink className="nav_items" to="/auth/login" onClick={closeDrawer}>
           <Button
             className={classes.icon}
             variant="text"
