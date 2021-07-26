@@ -14,14 +14,25 @@ import {
 const useStyle = makeStyles((theme) => ({
   root: {
     width: "30%",
-    minWidth: "250px",
     margin: " 10px",
     height: "fit-content",
+    [theme.breakpoints.down("sm")]: {
+      width: "45%",
+    },
     [theme.breakpoints.down("xs")]: {
-      maxWidth: "90%",
+      width: "100%",
+      minWidth: "auto",
+      maxWidth: "270px",
     },
   },
   img: { objectPosition: "50% 62%" },
+  textContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
+  },
 }));
 
 const ProductCard = ({ imgData, history }) => {
@@ -41,7 +52,7 @@ const ProductCard = ({ imgData, history }) => {
           classes={{ img: classes.img }}
         />
         <CardContent>
-          <Box display="flex" justifyContent="space-between">
+          <Box className={classes.textContainer}>
             <Typography variant="body2">{imgData.name}</Typography>
             <Typography variant="body2">{imgData.price} $</Typography>
           </Box>

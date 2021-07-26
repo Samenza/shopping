@@ -5,6 +5,7 @@ import {
   Divider,
   createTheme,
   ThemeProvider,
+  useMediaQuery,
 } from "@material-ui/core";
 
 import FilteringCategory from "./filteringCategory/FiltringCategory";
@@ -25,8 +26,6 @@ const useStyle = makeStyles((theme) => ({
     position: "sticky",
     width: "35vh",
     top: "1rem",
-    margin: "10rem 0 ",
-
     "& p": {
       padding: "3px",
       cursor: "pointer",
@@ -38,12 +37,11 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       width: "80%",
       height: "fitContent",
-      position: "unset",
+      position: "initial",
       display: "flex",
       justifyContent: "space-around",
       backgroundColor: "#ffe2d1da",
       boxShadow: "0 0px 1px 1px #bebebe",
-      margin: "0 50px",
     },
   },
   divider: {
@@ -58,11 +56,11 @@ const Filtering = ({
   imgData,
 }) => {
   const classes = useStyle();
-
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     //this div is for sticky position
     <ThemeProvider theme={theme}>
-      <div>
+      {matches ? (
         <Box className={classes.filterBox}>
           <FilteringCategory
             categoryDispatch={categoryDispatch}
@@ -76,7 +74,23 @@ const Filtering = ({
             setPriceFiltering={setPriceFiltering}
           />
         </Box>
-      </div>
+      ) : (
+        <div>
+          <Box className={classes.filterBox}>
+            <FilteringCategory
+              categoryDispatch={categoryDispatch}
+              imgData={imgData}
+            />
+            <Divider className={classes.divider} />
+            <FiltringColor colorDispatch={colorDispatch} imgData={imgData} />
+            <Divider className={classes.divider} />
+            <FiltringPrice
+              imgData={imgData}
+              setPriceFiltering={setPriceFiltering}
+            />
+          </Box>
+        </div>
+      )}
     </ThemeProvider>
   );
 };

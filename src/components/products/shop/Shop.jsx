@@ -81,7 +81,7 @@ const Shop = () => {
             setPriceFiltering={setPriceFiltering}
           />
 
-          <Box display="flex" flexDirection="column" width="75%">
+          <Box display="flex" flexDirection="column" width="100%">
             <SearchBox imgData={imgData} setFilterd={setFilterd} />
             <Sort
               productsLength={filterd.length}

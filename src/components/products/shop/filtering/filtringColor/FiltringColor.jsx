@@ -11,7 +11,7 @@ const useStyle = makeStyles((theme) => ({
   },
   colors: {
     display: "flex",
-    height: "2rem",
+
     [theme.breakpoints.down("sm")]: {
       flexWrap: "wrap",
       width: "3rem",

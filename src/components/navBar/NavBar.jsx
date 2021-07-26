@@ -17,10 +17,7 @@ const useStyle = makeStyles((theme) => ({
   },
   logoContainer: {
     display: "flex",
-    [theme.breakpoints.down("sm")]: {
-      justifyContent: "flex-end",
-      width: "50%",
-    },
+    [theme.breakpoints.down("sm")]: {},
   },
   navbar: {},
 }));
