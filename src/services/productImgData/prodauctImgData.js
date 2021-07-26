@@ -347,8 +347,6 @@ export default function getProductImages() {
         { src: "/images/shopping/Profile Platform Bed/2.jpg", id: 2 },
         { src: "/images/shopping/Profile Platform Bed/3.jpg", id: 3 },
         { src: "/images/shopping/Profile Platform Bed/4.jpg", id: 4 },
-        { src: "/images/shopping/Profile Platform Bed/5.jpg", id: 5 },
-        { src: "/images/shopping/Profile Platform Bed/6.jpg", id: 6 },
       ],
       available: "In Stock",
       brand: "kaily",
